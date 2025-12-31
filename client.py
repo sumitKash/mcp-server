@@ -4,11 +4,11 @@ import asyncio   # This will allow to run async call/task
 import traceback # For error handling
 
 
-# Creates new object called server_params 
-# If your server file is in diff folder then client.py , speficy that in args 
+# Creates new object called server_params
+# If your server file is in diff folder then client.py , speficy that in args
 server_params = StdioServerParameters(
-    command="npx", # This is equivalent to MCP Host client config  
-    args=["-y", "@openbnb/mcp-server-airbnb", "--ignore-robots-txt"],  # Optional command line arguments
+    command="uv", # This is equivalent to MCP Host client config
+    args=["run", "weather.py"],  # Optional command line arguments
 )
 
 
@@ -27,7 +27,7 @@ async def run():
                 print("Available tools:", tools)
 
                 print("Calling tool...")
-                result = await session.call_tool("airbnb_search", arguments={"location": "DelhiNCR"})
+                result = await session.call_tool("get_weather", arguments={"location": "DelhiNCR"})
 
                 print("Tool result:", result)
 
